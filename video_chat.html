@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video Chat</title>
+  <!-- <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  <!-- Bulma Version 0.8.x-->
+  <link rel="stylesheet" href="src/css/bulma.min.css">
+  <link rel="stylesheet" type="text/css" href="src/css/landing.css">
+</head>
+
+<body>
+  <div class="modal" id="share">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <p id = "invite_link"></p>
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+  <section class="hero is-info is-fullheight">
+    <div class="hero-head">
+      <nav class="navbar">
+        <div class="container">
+          <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+              <h2>Simple Video Chat</h2>
+            </a>
+            <span class="navbar-burger burger" data-target="navbarMenu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </div>
+          <div id="navbarMenu" class="navbar-menu">
+            <div class="navbar-end">
+              <span class="navbar-item">
+                <a class="button is-white is-outlined" onclick="show_invite_link();">
+                  <span class="icon">
+                    <i class="fa fa-share"></i>
+                  </span>
+                  <span>invite</span>
+                </a>
+              </span>
+              <span class="navbar-item">
+                <a class="button is-white is-outlined" href="https://ashish.ch">
+                  <span class="icon">
+                    <i class="fa fa-superpowers"></i>
+                  </span>
+                  <span>Blog</span>
+                </a>
+              </span>
+              <span class="navbar-item">
+                <a class="button is-white is-outlined" href="https://github.com/PandaWhoCodes/video-chat">
+                  <span class="icon">
+                    <i class="fa fa-github"></i>
+                  </span>
+                  <span>View Source</span>
+                  <span id="peer-id" style="display:none;"><span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="hero-body">
+      <div class="tile is-ancestor" id="all_video_elements">
+        <div class="tile is-8">
+          <video class="mirror" id="1" width="100%" height="70%" autoplay="autoplay"></video>
+        </div>
+        <div class="tile is-4 is-parent">
+          <div class="is-vertical" id="peer_videos">
+            <div class="tile">
+              <video class="mirror" id="2" width="300" height="300" autoplay="autoplay" class="center-block"></video>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+</body>
+<script src="src/js/jquery.min.js"></script>
+<script src="src/js/peerjs.js"></script>
+<script src="src/js/script.js"></script>
+<style media="screen">
+.mirror
+  {
+    transform: rotateY(180deg);
+    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+    -moz-transform:rotateY(180deg); /* Firefox */
+}
+
+</style>
+
+<script>
+  // hamburg menu for mobiles
+  (function() {
+    var burger = document.querySelector('.burger');
+    var menu = document.querySelector('#' + burger.dataset.target);
+    burger.addEventListener('click', function() {
+      burger.classList.toggle('is-active');
+      menu.classList.toggle('is-active');
+    });
+  })();
+  // end of hamburg menu code
+  // modal js
+  $("#showModal").click(function() {
+  $(".modal").addClass("is-active");
+});
+
+$(".modal-close").click(function() {
+   $(".modal").removeClass("is-active");
+});
+  var username;
+
+
+
+
+  function start_p2p() {
+    $("#start_button").attr("disabled", true);
+    username = $("#username").val();
+
+  }
+</script>
+
+</html>

@@ -1,0 +1,8 @@
+{
+    "name": "peerjs_chat_video_test",
+    "version": "0.0.1",
+    "dependencies": {
+        "express": "^4.17.1",
+        "peerjs": "~0.3.14"
+    }
+}
